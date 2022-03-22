@@ -2,7 +2,7 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div data-cy="ci-test">App</div>
   )
 }
 
