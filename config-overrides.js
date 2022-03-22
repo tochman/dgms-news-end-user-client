@@ -1,3 +1,3 @@
 const { override, addBabelPlugin } = require("customize-cra");
 
-module.exports = override(addBabelPlugin("instanbul"));
+module.exports = override(addBabelPlugin("istanbul"));
