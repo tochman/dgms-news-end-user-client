@@ -16,6 +16,7 @@ blocks:
             - chmod +x ./cc-test-reporter
             - ./cc-test-reporter before-build
             - yarn install
+            - yarn
             - 'yarn cypress:ci'
       env_vars:
         - name: CC_TEST_REPORTER_ID
