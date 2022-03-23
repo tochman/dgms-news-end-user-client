@@ -15,9 +15,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "start:silent": "BROWSER=none react-scripts start",
+    "start:silent": "BROWSER=none react-app-rewired start",
     "cy:open": "cypress open",
-    "cypress": "start-server-and-test start:silent http://localhost:3000 cy:open"
+    "cy:run": "cypress run",
+    "cypress": "start-server-and-test start:silent http://localhost:3000 cy:open",
+    "cypress:ci": "start-server-and-test start:silent http://localhost:3000 cy:run"
   },
   "eslintConfig": {
     "extends": [
@@ -38,7 +40,11 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
+    "babel-plugin-istanbul": "^6.1.1",
+    "customize-cra": "^1.0.0",
     "cypress": "^9.5.2",
+    "react-app-rewired": "^2.2.1",
     "start-server-and-test": "^1.14.0"
   }
 }
