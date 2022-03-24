@@ -20,6 +20,8 @@ blocks:
       env_vars:
         - name: CC_TEST_REPORTER_ID
           value: 5f6bc25048d21352776fa07726e129bc4b13280bb2c96539675e9c0de69dbac0
+        - name: RAILS_ENV
+          value: test
       epilogue:
         always:
           commands:
