@@ -5,26 +5,24 @@ import ArticleCard from './ArticleCard.jsx'
 
 
 const Articles = () => {
+  
   const [articles, setArticles] = useState([])
 
   const fetchArticles = async () => {
     const response = await axios.get('https://reqres.in/api/users')
-    setArticles(response.data.article)
+    setArticles(response.data.articles)
   }
-
   useEffect(() => {
     fetchArticles()
   }, [])
 
   const articleList = articles.map((article) => 
-  
   {
     return (
       <li key={article.id}>
         <ArticleCard article={article} />
       </li>  
     )
-    debugger 
   })
   return (
     <>
