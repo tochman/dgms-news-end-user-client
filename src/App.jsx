@@ -5,7 +5,7 @@ import Articles from './Components/Articles.jsx'
 const App = () => {
 
   return (
-    <div data-cy="ci-test">App
+    <div>
     <Articles/>
     </div>
   )

@@ -1,4 +1,4 @@
-describe('user can see a collectino of articles', () => {
+describe('user can see a collection of articles', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://reqres.in/api/users', {
       fixture: 'articles.json',
@@ -13,15 +13,12 @@ describe('user can see a collectino of articles', () => {
   it('is expected that the first title will be Deep Work', () => {
     cy.get('[data-cy=articles-list]')
       .first()
-      .should('have.contain', 'Deep Work')
+      .should('contain.text', 'Deep Work')
   })
 
-  it('is expected that the first title have a clickable URL', () => {
+  it('is expected that the last title will be Tipping point', () => {
     cy.get('[data-cy=articles-list]')
       .last()
-      .should('have.contain', 'Tipping Point')
-  
+      .should('contain.text', 'Tipping Point')
   })
-
-
 })
