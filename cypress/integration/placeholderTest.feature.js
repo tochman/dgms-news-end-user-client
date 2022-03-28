@@ -7,3 +7,4 @@ describe('Placeholder test to set up CI', () => {
     cy.get('[data-cy=ci-test]').should('contain.text', 'App')
   });
 });
+

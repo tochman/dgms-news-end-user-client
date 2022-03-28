@@ -1,0 +1,8 @@
+{
+  "articles":
+  [
+    {"id": 1, "title": "Deep Work", "body": "here are some words", "author": "Carl NewPort"},
+    {"id": 2, "title": "Thinking Fast & Slow", "body": "here are some more words", "author": "Daniel Kahneman"},
+    {"id": 3, "title": "Tipping Point", "body": "here are some more words still", "author": "Malcom Gladwell"}
+  ]
+}
