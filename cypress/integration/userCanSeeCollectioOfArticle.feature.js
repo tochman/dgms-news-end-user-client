@@ -1,6 +1,6 @@
 describe('user can see a collection of articles', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://reqres.in/api/users', {
+    cy.intercept('GET', 'https://reqres.in/api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
     cy.visit('/')

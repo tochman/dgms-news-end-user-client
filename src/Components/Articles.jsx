@@ -8,7 +8,7 @@ const Articles = () => {
   const [articles, setArticles] = useState([])
 
   const fetchArticles = async () => {
-    const response = await axios.get('https://reqres.in/api/users')
+    const response = await axios.get('https://reqres.in/api/articles')
     setArticles(response.data.articles)
   }
   useEffect(() => {
@@ -26,6 +26,7 @@ const Articles = () => {
   return (
     <>
       <ul data-cy="articles-list">{articleList}</ul>
+      
     </>
   )
 }
