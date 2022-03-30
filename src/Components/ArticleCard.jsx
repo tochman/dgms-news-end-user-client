@@ -8,7 +8,6 @@ const ArticleCard = ({ article }) => {
       meta={`By: ${article.author}`}
       image={article.image}
       description={article.headline}
-      href={article.url}
     ></Card>
   )
 }

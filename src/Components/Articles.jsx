@@ -13,16 +13,22 @@ const Articles = () => {
     fetchArticles()
   }, [])
 
+
+  const setActiveArticle = async (id) => {
+      const response = await axios.get("api/articles", {
+        params: { article_id: id},
+      });
+  };
+
+
   const articleList = articles.map((article) => {
     return (
       <li key={article.id}>
         <ArticleCard article={article} />
-        <a
-          href={article.headline}
-          onClick={() => {
-            fetcharticle(article.id)
-          }}
-        ></a>
+        <button days-cy="show-button"
+        onClick={() => setActiveArticle(article.id)}
+        className="ui button"
+        ></button>
       </li>
     )
   })
