@@ -1,11 +1,11 @@
 describe('Visitor can see a single article', () => {
-  before(() => {
+  beforeEach(() => {
     cy.intercept('GET', 'api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
     cy.visit('/')
     
-    cy.intercept('GET', '/api/articles?article_id=1', {
+    cy.intercept('GET', '**/articles?**', {
         fixture: 'articleShow.json',
       }).as('getSingleArticle')
   })
@@ -16,6 +16,11 @@ describe('Visitor can see a single article', () => {
 
   it('is expected to display correct url', () => {
     cy.get('[data-cy=show-button]').first().click()
-    cy.url().should('contain', '1')
+    cy.url().should('contain', 'http://localhost:3000/article/Deep%20Work')
   })
+
+  it.only('is epxected to display the body of the article', () => {
+    cy.get('[data-cy=article-body]').should('contain.text',"Lorem ipsum dolor")
+  })
+
 })
