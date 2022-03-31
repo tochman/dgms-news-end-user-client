@@ -1,26 +1,25 @@
-describe('Visitor can see a single article', () => {
-  beforeEach(() => {
-    cy.intercept('GET', 'api/articles', {
-      fixture: 'articles.json',
-    }).as('getArticles')
-    cy.visit('/')
-    
-    cy.intercept('GET', '**/articles?**', {
-        fixture: 'articleShow.json',
-      }).as('getSingleArticle')
-  })
+/* eslint-disable no-undef */
+describe("Visitor can see a single article", () => {
+  before(() => {
+    cy.intercept("GET", "api/articles", {
+      fixture: "articles.json",
+    }).as("getArticles");
+    cy.intercept("GET", "**/articles/**", {
+      fixture: "articleShow.json",
+    }).as("getSingleArticle");
+    cy.visit("/");
+    cy.get("[data-cy=show-button]").first().click();
+  });
 
-  it('is expected to make a GET request to the API', () => {
-    cy.wait('@getArticles').its('request.method').should('eq', 'GET')
-  })
 
-  it('is expected to display correct url', () => {
-    cy.get('[data-cy=show-button]').first().click()
-    cy.url().should('contain', 'http://localhost:3000/article/Deep%20Work')
-  })
+  it("is expected to display correct url", () => {
+    cy.url().should("contain", "http://localhost:3000/article/1");
+  });
 
-  it.only('is epxected to display the body of the article', () => {
-    cy.get('[data-cy=article-body]').should('contain.text',"Lorem ipsum dolor")
-  })
-
-})
+  it.only("is epxected to display the body of the article", () => {
+    cy.get("[data-cy=article-body]").should(
+      "contain.text",
+      "Lorem ipsum dolor"
+    );
+  });
+});
