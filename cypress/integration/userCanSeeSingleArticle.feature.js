@@ -16,7 +16,7 @@ describe("Visitor can see a single article", () => {
     cy.url().should("contain", "http://localhost:3000/article/1");
   });
 
-  it.only("is epxected to display the body of the article", () => {
+  it("is expected to display the body of the article", () => {
     cy.get("[data-cy=article-body]").should(
       "contain.text",
       "Lorem ipsum dolor"
