@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-// import ArticleCard from "./ArticleCard.jsx";
 import { Link } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 
 const Articles = () => {
-  const [articles, setArticles] = useState([]);
+  const dispatch = useDispatch();
+  const { articles } = useSelector((state) => state);
 
   const fetchArticles = async () => {
     const response = await axios.get("api/articles");
-    setArticles(response.data.articles);
+    dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
   };
   useEffect(() => {
     fetchArticles();
