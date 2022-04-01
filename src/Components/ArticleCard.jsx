@@ -7,8 +7,7 @@ const ArticleCard = ({ article }) => {
       header={article.title}
       meta={`By: ${article.author}`}
       image={article.image}
-      description={article.body}
-      href={article.url}
+      description={article.headline}
     ></Card>
   )
 }

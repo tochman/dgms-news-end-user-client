@@ -1,7 +1,7 @@
 {
   "articles":[
-    {"id": 1, "title": "Deep Work", "body": "here are some words", "author": "Carl NewPort", "image": "https://www.calnewport.com/wp-content/uploads/2015/11/deep-work-cal-newport.jpg", "url": "https://www.calnewport.com/books/deep-work/" },
-    {"id": 2, "title": "Thinking Fast & Slow", "body": "here are some more words", "author": "Daniel Kahneman"},
-    {"id": 3, "title": "Tipping Point", "body": "here are some more words still", "author": "Malcom Gladwell"}
+    {"id": 1, "title": "Deep Work", "headline": "Headline title 1", "author": "Carl NewPort", "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata", "image": "https://www.calnewport.com/wp-content/uploads/2015/11/deep-work-cal-newport.jpg", "url": "https://www.calnewport.com/books/deep-work/" },
+    {"id": 2, "title": "Thinking Fast & Slow", "headline": "Headline title 2", "author": "Daniel Kahneman"},
+    {"id": 3, "title": "Tipping Point", "headline": "Headline title 3", "author": "Malcom Gladwell"}
   ]
 }
