@@ -1,0 +1,7 @@
+{
+  "articles": [
+    {"id":1, "title": "sports 1", "body": "Sports  1body"},
+    {"id":2, "title": "sports 2", "body": "Sports  2body"},
+    {"id":3, "title": "sports 3", "body": "Sports  3body"}
+  ]
+}

@@ -8,9 +8,9 @@ const Articles = () => {
   const dispatch = useDispatch();
   const { articles } = useSelector((state) => state);
 
-  const fetchArticles = async () => {
-    const response = await axios.get("api/articles");
-    dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
+  const fetchArticles = async (sports) => {
+    const response = axios.get("api/articles", {params: {category: sports}});
+    dispatch({ type: "SET_ARTICLES", payload: response.data.articles});
   };
   useEffect(() => {
     fetchArticles();
