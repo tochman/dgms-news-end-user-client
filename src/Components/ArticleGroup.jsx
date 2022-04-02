@@ -2,7 +2,8 @@ import React from 'react'
 
 const ArticleGroup = () => {
   return (
-    <div>ArticleGroup</div>
+    <div data-cy="category_header" > ArticleGroup</div>
+    
   )
 }
 

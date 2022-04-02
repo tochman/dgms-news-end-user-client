@@ -13,9 +13,13 @@ describe("Visitor can see a single article", () => {
     })
     
     it("is expected to find sports categories", () => {
-    cy.get ('[data-cy="sports-news-link').should('contain.text', "Sports News")
+    cy.get ('[data-cy=sports-news-link]').should('contain.text', "Sports News")
   })
 
+   it("is expected to display relevant category articles on clicking ", () => {
+   cy.get ('[data-cy=sports-news-link]').click()
+   cy.get('[data-cy="category_header"]').should('contain', 'ArticleGroup')
+   });
 
-  });
-
+});
+  

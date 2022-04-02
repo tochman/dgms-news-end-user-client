@@ -28,3 +28,4 @@ describe('user can see a collection of articles', () => {
       .should('contain.text', 'Tipping Point')
   })
 })
+
