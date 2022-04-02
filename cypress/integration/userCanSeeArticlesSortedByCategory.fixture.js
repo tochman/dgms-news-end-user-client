@@ -1,15 +1,15 @@
 describe("Visitor can see a single article", () => {
     before(() => {
       cy.intercept("GET", "api/articles", {
-        fixture: "articlesCategory.json",
+        fixture: "articlesSport.json",
       }).as("getArticles");
       cy.visit("/");
     });
   
-    it("is expected to articles sorted by sporst and business ", () => {
+    it("is expected to articles sorted by sport and business ", () => {
         cy.get('[data-cy=articles-list]')
         .first()
-        .should('contain.text', 'Sports_1')
+        .should('contain.text', 'sports 1 sports 2 sports 3')
     })
     
   });

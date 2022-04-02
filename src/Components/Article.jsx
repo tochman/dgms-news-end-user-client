@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import { Card, Container } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,15 +10,16 @@ const Article = () => {
   const dispatch = useDispatch();
   const { articles, activeArticle } = useSelector((state) => state);
   let article = activeArticle;
-  const fetchArticle = async () => {
-    article = articles.find((element) => {
-      return element.id === parseInt(params.id);
-    });
-    dispatch({ type: "SET_ACTIVE_ARTICLE", payload: article });
+  
+  
+  const fetchArticles = async () => {
+    const response = await axios.get("api/articles");
+    dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
   };
   useEffect(() => {
-    fetchArticle();
+    fetchArticles();
   }, []);
+
   return (
     <Container>
       {article && (
