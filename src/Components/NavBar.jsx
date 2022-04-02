@@ -23,7 +23,7 @@ const Navbar = () => {
                    data-cy="business-news-link"
                 name="Business News"
                 as={NavLink}
-                to={{ pathname: "/businss"}}
+                to={{ pathname: "/business"}}
                 />
             </Menu>
         </Segment>

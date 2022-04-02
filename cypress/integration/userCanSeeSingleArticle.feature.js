@@ -4,6 +4,7 @@ describe("Visitor can see a single article", () => {
     cy.intercept("GET", "api/articles", {
       fixture: "articles.json",
     }).as("getArticles");
+
     cy.intercept("GET", "**/articles/**", {
       fixture: "articleShow.json",
     }).as("getSingleArticle");

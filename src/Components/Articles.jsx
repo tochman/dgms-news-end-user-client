@@ -19,7 +19,6 @@ const Articles = () => {
   const articleList = articles.map((article) => {
     return (
       <li key={article.id} style={{ listStyleType: "none" }}>
-        {/* <ArticleCard article={article} /> */}
         <Link to={`/article/${article.id}`}>
           <img
             src={article.image}

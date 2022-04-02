@@ -12,5 +12,10 @@ describe("Visitor can see a single article", () => {
         .should('contain.text', 'sports 1 sports 2 sports 3')
     })
     
+    it("is expected to find sports categories", () => {
+    cy.get ('[data-cy="sports-news-link').should('contain.text', "Sports News")
+  })
+
+
   });
 
