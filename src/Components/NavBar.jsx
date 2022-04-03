@@ -1,26 +1,26 @@
-import React from 'react'
+import React from "react"
 import { Menu, Segment } from "semantic-ui-react";
 import { NavLink, Link } from "react-router-dom";
 
 
-const Navbar = () => {
+const NavBar = () => {
     return (
         <Segment inverted>
             <Menu inverted secondary>
                 <Menu.Item
-                data-cy="current-news-link"
+                data-cy="current-link"
                 name="Current news"
                 as={Link}
                 to={{ pathname: "/"}}
                 />
                 <Menu.Item
-                data-cy="sports-news-link"
+                data-cy="sports-link"
                 name="Sports News"
                 as={NavLink}
                 to={{ pathname: "/sports"}}
                 />
                 <Menu.Item
-                   data-cy="business-news-link"
+                   data-cy="business-link"
                 name="Business News"
                 as={NavLink}
                 to={{ pathname: "/business"}}
@@ -30,4 +30,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar
+export default NavBar
