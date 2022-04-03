@@ -1,4 +1,4 @@
-describe("Visitor can see a single article", () => {
+describe("Visitor can see a articles sorted into categories", () => {
     before(() => {
       cy.intercept("GET", "api/articles", {
         fixture: "articlesSport.json",
