@@ -3,7 +3,9 @@ import Articles from "./Components/Articles.jsx";
 import { Routes, Route } from "react-router-dom";
 import Article from "./Components/Article.jsx";
 import NavBar from "./Components/NavBar.jsx";
-import ArticleCard from "./Components/ArticleCard";
+import ArticleGroup from "./Components/ArticleGroup.jsx";
+// import ArticleCard from "./Components/ArticleCard";
+
 
 
 const App = () => {
@@ -13,11 +15,14 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Articles />} />
       <Route path="/article/:id" element={<Article />} />
-      <Route path="/articleCard" element={<ArticleCard />}/>      
+      <Route path="/:category" element={<ArticleGroup />}/>      
     </Routes>
         </>
+
   );
 };
 export default App;
+
+//<Route path="/articleCard" element={<ArticleCard />}/>     
 
 

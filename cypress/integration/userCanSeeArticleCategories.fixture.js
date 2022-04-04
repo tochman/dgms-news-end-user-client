@@ -19,10 +19,10 @@ describe("Visitor can switch to sport news category tab", () => {
     cy.get("[data-cy=sports-link]").should("contain.text", "Sports News");
   });
 
-  //it("is expected to display relevant category articles on clicking ", () => {
-  //cy.get ('[data-cy=sports-news-link]').click()
-  //cy.get('[data-cy="category_header"]').should('contain.text', 'DeepWork')
-  // });
+  // it("is expected to display relevant category articles on clicking ", () => {
+  // cy.get ('[data-cy=sports-link]').click()
+  // cy.get('[data-cy="category_header"]').should('contain.text', 'Sports')
+  //  });
 });
 
 describe("visitor can switch to business news category tab", () => {

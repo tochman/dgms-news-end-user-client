@@ -1,13 +1,20 @@
-import React from "react";
-//import { Card, Container } from "semantic-ui-react";
+import React from 'react'
+import { Container } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+//import Article from './Article';
 
 const ArticleGroup = () => {
-  
+const { category } = useParams();
+//const classes = useStyles();
+//const [articles, setArticles] = useState([]);
+
+
   return (
     <Container>
       <div data-cy="category_header">
+      {category}
         {/* {" "}
-        ArticleGroup
         {article && (
           <Card
             header={article.title}
@@ -23,8 +30,14 @@ const ArticleGroup = () => {
         )} */}
       </div>
     </Container>
-  );
-  
-};
+  )
+}
+
+
+
+
+
 
 export default ArticleGroup
+
+
