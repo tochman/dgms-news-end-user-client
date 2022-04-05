@@ -14,9 +14,13 @@ const ArticlesAPI = {
     // const article = articles.find((element) => {
     //   return element.id === parseInt(id);
     // });
-    const response = await axios.get(`api/articles/${id}`)
-    dispatch({ type: "SET_ACTIVE_ARTICLE", payload: response.data.article });
+    const response = await axios.get(`api/articles/${id}`);
+    const { article } = response.data;
+    dispatch({ type: "SET_ACTIVE_ARTICLE", payload: article });
   },
+  async create(params) {},
+  async edit(id, params) {},
+  async destroy(id) {},
 };
 
 export default ArticlesAPI;
