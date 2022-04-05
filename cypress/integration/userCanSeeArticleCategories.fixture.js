@@ -44,4 +44,6 @@ describe("visitor can switch to business news category tab", () => {
       cy.get('[data-cy="category_header"]').should("contain", "business");
     });
   });
+
+  // Add tests to ensure article title is correct
 });
