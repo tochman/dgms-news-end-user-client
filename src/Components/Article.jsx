@@ -1,22 +1,17 @@
 import React, { useEffect } from "react";
 import { Card, Container } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import ArticlesAPI from '../modules/ArticlesAPI'
 
 
 const Article = () => {
   const params = useParams();
-  const dispatch = useDispatch();
-  const { articles, activeArticle } = useSelector((state) => state);
+  const { activeArticle } = useSelector((state) => state);
   let article = activeArticle;
-  const fetchArticle = async () => {
-    article = articles.find((element) => {
-      return element.id === parseInt(params.id);
-    });
-    dispatch({ type: "SET_ACTIVE_ARTICLE", payload: article });
-  };
+
   useEffect(() => {
-    fetchArticle();
+    ArticlesAPI.show(parseInt(params.id))
   }, []);
   return (
     <Container>
