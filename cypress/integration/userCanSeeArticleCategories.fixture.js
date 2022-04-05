@@ -19,10 +19,10 @@ describe("Visitor can switch to sport news category tab", () => {
     cy.get("[data-cy=sports-link]").should("contain.text", "Sports News");
   });
 
-  // it("is expected to display relevant category articles on clicking ", () => {
-  // cy.get ('[data-cy=sports-link]').click()
-  // cy.get('[data-cy="category_header"]').should('contain.text', 'Sports')
-  //  });
+  it("is expected to display relevant category articles on clicking ", () => {
+    cy.get("[data-cy=sports-link]").click();
+    cy.get('[data-cy="category_header"]').should("contain", "sports");
+  });
 });
 
 describe("visitor can switch to business news category tab", () => {
@@ -38,5 +38,10 @@ describe("visitor can switch to business news category tab", () => {
   });
   it("is expected to display Business News header", () => {
     cy.get("[data-cy=business-link]").should("contain.text", "Business News");
+
+    it("is expected to display relevant category articles on clicking ", () => {
+      cy.get("[data-cy=business-link]").click();
+      cy.get('[data-cy="category_header"]').should("contain", "business");
+    });
   });
 });
