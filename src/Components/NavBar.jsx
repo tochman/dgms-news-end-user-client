@@ -20,7 +20,7 @@ const NavBar = () => {
                 to={{ pathname: "/sports"}}
                 />
                 <Menu.Item
-                   data-cy="business-link"
+                data-cy="business-link"
                 name="Business News"
                 as={NavLink}
                 to={{ pathname: "/business"}}

@@ -2,6 +2,6 @@
     "articles": [
       { "id": 4, "title": "business 1", "body": "business  1body", "category": "business", "image": "https://www.calnewport.com/wp-content/uploads/2015/11/deep-work-cal-newport.jpg" },
       { "id": 5, "title": "business 2", "body": "business  2body", "category": "business", "image": "https://s1.adlibris.com/images/32425586/the-mind-of-the-leader.jpg" },
-      { "id": 6, "title": "business 3", "body": "business  3body", "category": "business", "image": "https://i.pinimg.com/originals/41/6a/fe/416afe907c6aa73922f795941c2a6736.jpg" }
+      { "id": 6, "title": "business 3", "body": "business  3body", "category": "business", "image": "https://upload.wikimedia.org/wikipedia/en/0/03/Cover_Good_2_Gr8.jpg" }
     ]
   }

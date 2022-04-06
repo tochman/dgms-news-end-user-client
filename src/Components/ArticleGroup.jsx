@@ -11,20 +11,18 @@ const ArticleGroup = () => {
     return (
       <li key={article.id} style={{ listStyleType: "none" }}>
         <Link to={`/article/${article.id}`}>
+          <div>
+            <h1 data-cy="article-title">{article.title}</h1>{" "}
+          </div>
           <img
             src={article.image}
             alt=""
             style={{ height: 200 + "px", width: "auto" }}
           />
-          <div data-cy="show-button">
-            <h1>{article.title}</h1>{" "}
-          </div>
         </Link>
       </li>
     );
   });
-
-
 
   return (
     <Container>

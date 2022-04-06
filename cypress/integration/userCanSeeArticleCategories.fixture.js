@@ -46,4 +46,15 @@ describe("visitor can switch to business news category tab", () => {
   });
 
   // Add tests to ensure article title is correct
+  it("is expected to see business article title", () => {
+    cy.get("[data-cy=business-link]").click();
+    cy.get("[data-cy=articles-list]")
+      .children()
+      .first()
+      .within(() => {
+        cy.get("[data-cy=article-title]")
+          .should("contain.text", "business 1")
+          .and("be.visible");
+      });
+  });
 });
