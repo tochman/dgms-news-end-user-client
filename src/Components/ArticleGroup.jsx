@@ -14,7 +14,7 @@ const ArticleGroup = () => {
           <div>
             <h1 data-cy="article-title">{article.title}</h1>{" "}
           </div>
-          <img
+          <img 
             src={article.image}
             alt=""
             style={{ height: 200 + "px", width: "auto" }}

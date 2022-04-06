@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import { Card, Container } from "semantic-ui-react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
+import React, { useEffect } from 'react'
+import axios from 'axios'
+import { Card, Container } from 'semantic-ui-react'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Article = () => {
-  const params = useParams();
-  const dispatch = useDispatch();
-  const { articles, activeArticle } = useSelector((state) => state);
-  let article = activeArticle;
-  
-  
-  const fetchArticles = async () => {
-    const response = await axios.get("api/articles");
-    dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
-  };
+  let { id } = useParams();
+  const dispatch = useDispatch()
+  const { activeArticle } = useSelector((state) => state)
+  let article = activeArticle
+
+  const fetchArticle = async () => {
+    const response = await axios.get(`api/article/${id}`)
+    dispatch({ type: 'SET_ACTIVE_ARTICLE', payload: response.data.article })
+  }
+
   useEffect(() => {
-    fetchArticles();
-  }, []);
+    fetchArticle()
+  }, [])
 
   return (
     <Container>
@@ -36,7 +35,7 @@ const Article = () => {
         ></Card>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default Article;
+export default Article
