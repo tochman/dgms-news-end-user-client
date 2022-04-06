@@ -27,7 +27,7 @@ const ArticleGroup = () => {
   return (
     <Container>
       <div data-cy="category_header">{category}</div>
-      <ul>{articlesList}</ul>
+      <ul data-cy="articles-list">{articlesList}</ul>
     </Container>
   );
 };

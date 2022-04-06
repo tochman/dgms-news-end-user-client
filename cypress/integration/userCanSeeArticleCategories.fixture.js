@@ -1,18 +1,22 @@
 describe("Visitor can switch to sport news category tab", () => {
   before(() => {
     cy.intercept("GET", "api/articles", {
-      fixture: "articlesSport.json",
-    }).as("sportsArticles");
+      fixture: "articles.json",
+    }).as("getArticles");
     cy.visit("/");
   });
+
   it("is expected to make a GET request to the API", () => {
-    cy.wait("@sportsArticles").its("request.method").should("eq", "GET");
+    cy.wait("@getArticles").its("request.method").should("eq", "GET");
   });
 
   it("is expected to articles sorted by sport ", () => {
     cy.get("[data-cy=articles-list]")
       .first()
-      .should("contain.text", "sports 1 sports 2 sports 3");
+      .should(
+        "contain.text",
+        "Sports 1 Sports 2 Sports 3 Business 1 Business 2 Business 3"
+      );
   });
 
   it("is expected to display Sport News header", () => {
@@ -26,23 +30,12 @@ describe("Visitor can switch to sport news category tab", () => {
 });
 
 describe("visitor can switch to business news category tab", () => {
-  before(() => {
-    cy.intercept("GET", "/api/articles", {
-      fixture: "articlesBusiness.json",
-    }).as("businessArticles");
-    cy.visit("/");
-  });
-
-  it("is expected to make a GET request to the API", () => {
-    cy.wait("@businessArticles").its("request.method").should("eq", "GET");
-  });
   it("is expected to display Business News header", () => {
     cy.get("[data-cy=business-link]").should("contain.text", "Business News");
-
-    it("is expected to display relevant category articles on clicking ", () => {
-      cy.get("[data-cy=business-link]").click();
-      cy.get('[data-cy="category_header"]').should("contain", "business");
-    });
+  });
+  it("is expected to display relevant category articles on clicking ", () => {
+    cy.get("[data-cy=business-link]").click();
+    cy.get('[data-cy="category_header"]').should("contain", "business");
   });
 
   // Add tests to ensure article title is correct
@@ -53,7 +46,7 @@ describe("visitor can switch to business news category tab", () => {
       .first()
       .within(() => {
         cy.get("[data-cy=article-title]")
-          .should("contain.text", "business 1")
+          .should("contain.text", "Business 1")
           .and("be.visible");
       });
   });
