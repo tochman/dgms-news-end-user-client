@@ -1,7 +1,7 @@
 {
   "articles":[
-    { "id": 1, "title": "sports 1", "body": "Sports 1 body", "category": "sports" },
-    { "id": 2, "title": "sports 2", "body": "Sports 2 body", "category": "sports" },
-    { "id": 3, "title": "sports 3", "body": "Sports 3 body", "category": "sports" }
+    { "id": 1, "title": "sports 1", "body": "Sports 1 body", "category": "sports", "image": "https://images.livemint.com/img/2022/01/19/600x338/sania_mirza_1642583928141_1642583928267.jpg" },
+    { "id": 2, "title": "sports 2", "body": "Sports 2 body", "category": "sports", "image": "https://images.indianexpress.com/2020/05/sports-stars-in-lockdown.jpg" },
+    { "id": 3, "title": "sports 3", "body": "Sports 3 body", "category": "sports", "image": "https://cdn.newsapi.com.au/image/v1/31c0b689d5ee19fcab006523b02d878b?width=320" }
   ]
 }
