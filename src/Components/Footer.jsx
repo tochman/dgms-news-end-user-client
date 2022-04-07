@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <p id="footer">Bringing you the best local news</p>
+      <footer>
+    <p id="footer">DGMS News - Bringing you the best local news</p>
+    </footer>
   )
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Container } from "semantic-ui-react";
+import { Container, Card, Image } from "semantic-ui-react";
 
 const Articles = () => {
   const dispatch = useDispatch();
@@ -27,18 +27,23 @@ const Articles = () => {
 
   const articleList = displayArticles(articles).map((article) => {
     return (
+      <Card>
       <li key={article.id} style={{ listStyleType: "none" }}>
         <Link to={`/article/${article.id}`}>
-          <img
+          <Image
             src={article.image}
             alt=""
+            size='small'
             style={{ height: 200 + "px", width: "auto" }}
+            fluid
           />
           <div data-cy="show-button">
-            <h1>{article.title}</h1>{" "}
+            <h2>{article.title}</h2>{" "}
+
           </div>
         </Link>
       </li>
+      </Card>
     );
   });
   return (

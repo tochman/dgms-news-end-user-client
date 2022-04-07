@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Container } from "semantic-ui-react";
+import { Container, Card } from "semantic-ui-react";
 
 const ArticleGroup = () => {
   const { category } = useParams();
@@ -9,6 +9,7 @@ const ArticleGroup = () => {
 
   const articlesList = articles[category]?.map((article) => {
     return (
+      <Card>
       <li key={article.id} style={{ listStyleType: "none" }}>
         <Link to={`/article/${article.id}`}>
           <div>
@@ -18,15 +19,17 @@ const ArticleGroup = () => {
             src={article.image}
             alt=""
             style={{ height: 200 + "px", width: "auto" }}
+            
           />
         </Link>
       </li>
+      </Card>
     );
   });
 
   return (
-    <Container>
-      <div data-cy="category_header">{category}</div>
+    <Container text>
+      <div data-cy="category_header"> The latest {category} news </div>
       <ul data-cy="articles-list">{articlesList}</ul>
     </Container>
   );
