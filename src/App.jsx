@@ -5,6 +5,7 @@ import Article from "./Components/Article.jsx";
 import NavBar from "./Components/NavBar.jsx";
 import ArticleGroup from "./Components/ArticleGroup.jsx";
 import Footer from "./Components/Footer.jsx";
+import Login from "./Components/Login.jsx";
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Articles />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/:category" element={<ArticleGroup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <div 
       style={{
