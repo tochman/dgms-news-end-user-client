@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -12,14 +12,22 @@ const Articles = () => {
     const response = await axios.get("api/articles");
     dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
   };
+
+  const displayArticles = (articles) => {
+    let articlesArray = [];
+    Object.entries(articles).map((category) => {
+      articlesArray.push(category[1]);
+    });
+    return articlesArray.flat();
+  };
+
   useEffect(() => {
     fetchArticles();
   }, []);
 
-  const articleList = articles.map((article) => {
+  const articleList = displayArticles(articles).map((article) => {
     return (
       <li key={article.id} style={{ listStyleType: "none" }}>
-        {/* <ArticleCard article={article} /> */}
         <Link to={`/article/${article.id}`}>
           <img
             src={article.image}

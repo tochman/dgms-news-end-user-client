@@ -12,14 +12,11 @@ blocks:
           commands:
             - sem-version node 16.13.2
             - checkout
-            - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
+            - "curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter"
             - chmod +x ./cc-test-reporter
             - ./cc-test-reporter before-build
             - yarn install
-            - 'yarn cypress:ci'
-      env_vars:
-        - name: CC_TEST_REPORTER_ID
-          value: 5f6bc25048d21352776fa07726e129bc4b13280bb2c96539675e9c0de69dbac0
+            - "yarn cypress:ci"
       epilogue:
         always:
           commands:
@@ -30,3 +27,6 @@ blocks:
         on_fail:
           commands:
             - ./cc-test-reporter after-build --exit-code 1
+      env_vars:
+        - name: CC_TEST_REPORTER_ID
+          value: 5f6bc25048d21352776fa07726e129bc4b13280bb2c96539675e9c0de69dbac0
