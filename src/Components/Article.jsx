@@ -20,7 +20,7 @@ const Article = () => {
   }, [])
 
   return (
-    <Container>
+    <Container text>
       {article && (
         <Card
           header={article.title}

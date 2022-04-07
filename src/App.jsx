@@ -4,6 +4,8 @@ import Articles from "./Components/Articles.jsx";
 import Article from "./Components/Article.jsx";
 import NavBar from "./Components/NavBar.jsx";
 import ArticleGroup from "./Components/ArticleGroup.jsx";
+import Footer from "./Components/Footer.jsx";
+
 
 const App = () => {
   return (
@@ -14,6 +16,15 @@ const App = () => {
         <Route path="/article/:id" element={<Article />} />
         <Route path="/:category" element={<ArticleGroup />} />
       </Routes>
+      <div 
+      style={{
+        position: "fixed",
+        left: 0,
+        bottom: 0,
+        right: 0,
+      }}>
+      <Footer/>
+      </div>
     </>
   );
 };
