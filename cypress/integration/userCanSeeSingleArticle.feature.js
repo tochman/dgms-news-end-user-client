@@ -10,12 +10,12 @@ describe('Visitor can', () => {
         fixture: 'articleShow.json',
       }).as('getSingleArticle')
 
-      cy.intercept('POST', 'api/auth/sing_in', {
+      cy.intercept('POST', 'api/auth/sign_in', {
         fixture: 'authenticationSuccess.json',
         headers: { uid: 'user@email.com' },
       })
 
-      cy.intercept('GET', 'api/auth/validate_token', {
+      cy.intercept('GET', 'api/auth/validate_token**', {
         fixture: 'authenticationSuccess.json',
       })
 
@@ -52,5 +52,5 @@ describe('Visitor can', () => {
     })
   })
 
-  describe('see not see a single article when not atuhenticated', () => {})
+  describe('can not see a single article in full when unauthenticated', () => {})
 })

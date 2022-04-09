@@ -3,11 +3,12 @@ import axios from 'axios'
 import { Card, Container } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import Login from './Login'
 
 const Article = () => {
-  let { id } = useParams();
+  let { id } = useParams()
   const dispatch = useDispatch()
-  const { activeArticle } = useSelector((state) => state)
+  const { activeArticle, userAuthenticated } = useSelector((state) => state)
   let article = activeArticle
 
   const fetchArticle = async () => {
@@ -21,7 +22,7 @@ const Article = () => {
 
   return (
     <Container text>
-      {article && (
+      {article && userAuthenticated ? (
         <Card
           header={article.title}
           meta={`By: ${article.author}`}
@@ -33,6 +34,8 @@ const Article = () => {
             </>
           )}
         ></Card>
+      ) : (
+        <Login />
       )}
     </Container>
   )
