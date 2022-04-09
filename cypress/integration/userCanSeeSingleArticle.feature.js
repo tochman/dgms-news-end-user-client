@@ -56,23 +56,24 @@ describe('Visitor can see articles appropriate to their authorisation', () => {
 
 
 // describe('can not see a single article in full when unauthenticated', () => {})
-// before(() => {
-//   cy.intercept('GET', 'api/articles', {
-//     fixture: 'articles.json',
-//   }).as('getArticles')
+//  before(() => {
+//    cy.intercept('GET', 'api/articles', {
+//      fixture: 'articles.json',
+//    }).as('getArticles')
 
-//   cy.visit('/')
+//    cy.visit('/')
 
-//   cy.get('[data-cy=show-button]').first().click()
+//    cy.get('[data-cy=show-button]').first().click()
 
-//   it('is expected to request the user to sign in', () => {
+//    it('is expected to request the user to sign in', () => {
 //     cy.get('[data-cy=login-requesst]').should(
-//       'container.text',
-//       'Please login to view full article',
-//     )
-//   })
+//        'container.text',
+//        'Please login to view full article',
+//      )
+//    })
 
-//   it('is expected to redirect user to login screen', () => {
-//     cy.url().should('contain', 'http://localhost:3000/login')
+//    it('is expected to redirect user to login screen', () => {
+//      cy.url().should('contain', 'http://localhost:3000/login')
+//    })
 //   })
 })
