@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Login from './Login'
 
-const Article = () => {
+const Article = ({toast}) => {
   let { id } = useParams()
   const dispatch = useDispatch()
   const { activeArticle, userAuthenticated } = useSelector((state) => state)
@@ -35,7 +35,7 @@ const Article = () => {
           )}
         ></Card>
       ) : (
-        <Login />
+        <Login toast={toast}/>
       )}
     </Container>
   )
