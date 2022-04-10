@@ -44,7 +44,7 @@ const Login = ({toast}) => {
             placeholder="Password"
           />
           <Form.Field
-            data-cy="login-submit-button"
+            data-cy="submit-button"
             content="Login"
             control={Button}
           />

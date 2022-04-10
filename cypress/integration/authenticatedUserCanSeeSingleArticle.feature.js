@@ -1,50 +1,66 @@
 /* eslint-disable no-undef */
 describe("Visitor  can ", () => {
-   beforeEach(() => {
-     cy.intercept("GET", "api/articles", {
-       fixture: "articles.json",
-     }).as("getArticles");
+  beforeEach(() => {
+    cy.intercept("GET", "api/articles", {
+      fixture: "articles.json",
+    }).as("getArticles");
 
-     cy.intercept("GET", "**/article/**", {
-       fixture: "articleShow.json",
-     }).as("getSingleArticle");
+    cy.intercept("GET", "**/article/**", {
+      fixture: "articleShow.json",
+    }).as("getSingleArticle");
+  });
 
-     cy.visit("/");
+  //    cy.intercept("POST", "/api/auth/sign_in", {
+  //       fixture: "authenticationSuccess.json",
+  //       headers: { uid: "user@email.com" },
+  //     });
 
-     cy.window().its("store").invoke("dispatch", {
-       type: "SET_USER_AUTHENTICATED",
-       payload: true,
-     });
+  //     cy.intercept("GET", "api/auth/validate_token**", {
+  //       fixture: "authenticationSuccess.json",
+  //     });
 
-     cy.get("[data-cy=head-lines]").first().click();
-   });
+  //     cy.visit("/");
+
+  //     cy.get("[data-cy=head-lines]").first().click();
+
+  //     cy.get("[data-cy=login-email]").type("username");
+  //     cy.get("[data-cy=login-password]").type("password");
+
+
+  //   //  cy.window().its("store").invoke("dispatch", {
+  //   //    type: "SET_USER_AUTHENTICATED",
+  //   //    payload: true,
+  //   //  });
+
+     
+  //  });
   describe("see a single article when authenticated", () => {
-    // beforeEach(() => {
-    //   cy.intercept("GET", "api/articles", {
-    //     fixture: "articles.json",
-    //   }).as("getArticles");
+    beforeEach(() => {
+      // cy.intercept("GET", "api/articles", {
+      //   fixture: "articles.json",
+      // }).as("getArticles");
 
-    //   cy.intercept("GET", "**/article/**", {
-    //     fixture: "articleShow.json",
-    //   }).as("getSingleArticle");
+      // cy.intercept("GET", "**/article/**", {
+      //   fixture: "articleShow.json",
+      // }).as("getSingleArticle");
 
-    //   cy.intercept("POST", "/api/auth/sign_in", {
-    //     fixture: "authenticationSuccess.json",
-    //     headers: { uid: "user@email.com" },
-    //   });
+      cy.intercept("POST", "/api/auth/sign_in", {
+        fixture: "authenticationSuccess.json",
+        headers: { uid: "user@email.com" },
+      });
 
-    //   cy.intercept("GET", "api/auth/validate_token**", {
-    //     fixture: "authenticationSuccess.json",
-    //   });
+      cy.intercept("GET", "api/auth/validate_token**", {
+        fixture: "authenticationSuccess.json",
+      });
 
-    //   cy.visit("/");
+      cy.visit("/");
 
-    //   cy.get("[data-cy=show-button]").first().click();
+      cy.get("[data-cy=head-lines]").first().click();
 
-    //   cy.get("[data-cy=login-email]").type("username");
-    //   cy.get("[data-cy=login-password]").type("password");
-    //   cy.get("[data-cy=login-submit-button]").click();
-    // });
+      cy.get("[data-cy=login-email]").type("username");
+      cy.get("[data-cy=login-password]").type("password");
+      cy.get("[data-cy=submit-button]").click();
+    });
 
     it("is expected to display a sign in button", () => {
       cy.get("[data-cy=login-button]").should("be.visible");
