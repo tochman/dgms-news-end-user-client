@@ -30,7 +30,7 @@ const Articles = () => {
       <Card>
         <li key={article.id} style={{ listStyleType: "none" }}>
           <Link to={`/article/${article.id}`}>
-            <div data-cy="show-button">
+            <div data-cy="head-lines">
               <h2>{article.title}</h2>{" "}
             </div>
             <Image

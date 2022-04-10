@@ -16,7 +16,7 @@ describe("Visitor  can ", () => {
        payload: true,
      });
 
-     cy.get("[data-cy=show-button]").first().click();
+     cy.get("[data-cy=head-lines]").first().click();
    });
   describe("see a single article when authenticated", () => {
     // beforeEach(() => {
