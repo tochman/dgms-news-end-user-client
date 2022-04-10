@@ -28,21 +28,20 @@ const Articles = () => {
   const articleList = displayArticles(articles).map((article) => {
     return (
       <Card>
-      <li key={article.id} style={{ listStyleType: "none" }}>
-        <Link to={`/article/${article.id}`}>
-          <Image
-            src={article.image}
-            alt=""
-            size='small'
-            style={{ height: 200 + "px", width: "auto" }}
-            fluid
-          />
-          <div data-cy="show-button">
-            <h2>{article.title}</h2>{" "}
-
-          </div>
-        </Link>
-      </li>
+        <li key={article.id} style={{ listStyleType: "none" }}>
+          <Link to={`/article/${article.id}`}>
+            <div data-cy="show-button">
+              <h2>{article.title}</h2>{" "}
+            </div>
+            <Image
+              src={article.image}
+              alt=""
+              size="small"
+              style={{ height: 200 + "px", width: "auto" }}
+              fluid
+            />
+          </Link>
+        </li>
       </Card>
     );
   });
