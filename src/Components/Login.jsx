@@ -25,7 +25,7 @@ const Login = ({ toast }) => {
         payload: true,
       });
       toast("Login successful", toastSetting);
-      activeArticle ? navigate(`/article/${activeArticle.id}`) : navigate("/");
+      activeArticle ? navigate(`/article/${activeArticle.id}`): navigate("/");
     }
   };
 
