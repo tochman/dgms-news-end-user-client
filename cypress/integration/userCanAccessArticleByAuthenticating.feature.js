@@ -4,6 +4,9 @@ describe("visitor can", () => {
       cy.intercept("GET", "api/articles", {
         fixture: "articles.json",
       }).as("getArticles");
+      cy.intercept("GET", "**/article/**", {
+        fixture: "articleShow.json",
+      }).as("getSingleArticle");
 
       cy.intercept("POST", "api/auth/sign_in", {
         fixture: "authenticationSuccess.json",
@@ -31,13 +34,15 @@ describe("visitor can", () => {
       it("is expected to redirect user to all articles", () => {
         cy.get("[data-cy=articles-list]").children().should("have.length", 6);
       });
+      it("is expected to inform user that login was successful", () => {
+        cy.get("[data-cy=flash-message]").should(
+          "contain.text",
+          "Login successful"
+        );
+      });
 
       describe("After logging in right away clicking an article", () => {
         beforeEach(() => {
-          cy.intercept("GET", "**/article/**", {
-            fixture: "articleShow.json",
-          }).as("getSingleArticle");
-
           cy.get("[data-cy=head-lines]").first().click();
         });
         it("is expected user to access full article after logging in right away", () => {

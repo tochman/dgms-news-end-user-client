@@ -10,37 +10,17 @@ describe("Visitor  can ", () => {
         fixture: "articleShow.json",
       }).as("getSingleArticle");
 
-      //  cy.intercept("POST", "/api/auth/sign_in", {
-      //   fixture: "authenticationSuccess.json",
-      //   headers: { uid: "user@email.com" },
-      // });
-
-      // cy.intercept("GET", "api/auth/validate_token**", {
-      //   fixture: "authenticationSuccess.json",
-      // });
-
       cy.visit("/");
       cy.window().its("store").invoke("dispatch", {
         type: "SET_USER_AUTHENTICATED",
         payload: true,
       });
-
       cy.get("[data-cy=head-lines]").first().click();
     });
 
     it("is expected to display a sign in button", () => {
       cy.get("[data-cy=login-button]").should("be.visible");
     });
-
-    // it("is expected to inform user that login was successful", () => {
-    //   cy.get("[data-cy=login-email]").type("username");
-    //   cy.get("[data-cy=login-password]").type("password");
-    //   cy.get("[data-cy=submit-button]").click();
-    //   cy.get("[data-cy=flash-message]").should(
-    //     "contain.text",
-    //     "Login successful"
-    //   );
-    // });
 
     it("is expected to display correct url", () => {
       cy.url().should("contain", "http://localhost:3000/article/1");
