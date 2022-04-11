@@ -15,9 +15,6 @@ const Article = ({ toast }) => {
   const fetchArticle = async () => {
     const response = await axios.get(`api/article/${id}`);
     dispatch({ type: "SET_ACTIVE_ARTICLE", payload: response.data.article });
-    // if (!userAuthenticated) {
-    //   toast.error("Please login to view full articles");
-    // }
   };
 
   useEffect(() => {
