@@ -1,28 +1,33 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import auth from '../modules/auth'
-import { Button, Container, Form, Input } from 'semantic-ui-react'
-// import { ToastContainer, toast } from 'react-toastify'
-// import 'react-toastify/dist/ReactToastify.css'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import auth from "../modules/auth";
+import { Button, Container, Form, Input } from "semantic-ui-react";
 
-const Login = ({toast}) => {
-  const dispatch = useDispatch()
+
+const Login = ({ toast }) => {
+  const dispatch = useDispatch();
+  const { activeArticle } = useSelector((state) => state);
+  let navigate = useNavigate();
 
   const handleLogin = async (event) => {
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
+    const toastSetting = { autoClose: 500, toastId: "message-box" };
 
-    const response = await auth.signIn(email, password)
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const response = await auth.signIn(email, password);
 
     if (response.data.uid) {
       dispatch({
-        type: 'SET_USER_AUTHENTICATED',
+        type: "SET_USER_AUTHENTICATED",
         payload: true,
-      })
-      toast('Login successful')
+      });
+      toast("Login successful", toastSetting);
+      activeArticle ? navigate(`/article/${activeArticle.id}`) : navigate("/");
     }
-  }
+  };
 
   return (
     <>
@@ -50,9 +55,8 @@ const Login = ({toast}) => {
           />
         </Form>
       </Container>
-      
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

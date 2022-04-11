@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { Card, Container } from 'semantic-ui-react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Login from './Login'
+import Login from "./Login";
 
-const Article = ({toast}) => {
+const Article = ({ toast }) => {
+  let navigate = useNavigate();
   let { id } = useParams()
   const dispatch = useDispatch()
   const { activeArticle, userAuthenticated } = useSelector((state) => state)
@@ -14,11 +15,19 @@ const Article = ({toast}) => {
   const fetchArticle = async () => {
     const response = await axios.get(`api/article/${id}`)
     dispatch({ type: 'SET_ACTIVE_ARTICLE', payload: response.data.article })
+    if (!userAuthenticated) {
+      toast.error("Please login to view full articles");
+    }
   }
 
   useEffect(() => {
     fetchArticle()
-  }, [])
+  }, []);
+  useEffect(() => {
+    if (!userAuthenticated) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <Container text>
@@ -35,10 +44,10 @@ const Article = ({toast}) => {
           )}
         ></Card>
       ) : (
-        <Login toast={toast}/>
+        <Login toast={toast} />
       )}
     </Container>
-  )
+  );
 }
 
 export default Article
