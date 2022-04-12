@@ -18,8 +18,8 @@ describe("Visitor  can ", () => {
       cy.get("[data-cy=head-lines]").first().click();
     });
 
-    it("is expected to display a sign in button", () => {
-      cy.get("[data-cy=login-button]").should("be.visible");
+    it.only("is expected to display a sign in button", () => {
+      cy.get("[data-cy=login-button]").should("not.exist");
     });
 
     it("is expected to display correct url", () => {
