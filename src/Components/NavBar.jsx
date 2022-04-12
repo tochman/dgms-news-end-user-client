@@ -1,15 +1,13 @@
-import React from "react";
+import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 import { NavLink, Link } from 'react-router-dom'
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
 const NavBar = () => {
+  const { userAuthenticated } = useSelector((state) => state)
 
-  const { userAuthenticated } = useSelector((state) => state);
-  
   return (
     <Segment inverted>
-     
       <Menu inverted secondary>
         <Menu.Item
           data-cy="current-link"
@@ -29,14 +27,15 @@ const NavBar = () => {
           as={NavLink}
           to={{ pathname: '/business' }}
         />
-          {!userAuthenticated && <Menu.Item 
-        data-cy="login-button" 
-        name="Login" 
-        as={NavLink}
-        to={{ pathname: '/login' }}
-        /> }
-      
-      </Menu> 
+        {(!userAuthenticated && (
+          <Menu.Item
+            data-cy="login-button"
+            name="Login"
+            as={NavLink}
+            to={{ pathname: '/login' }}
+          />
+        )) || (<Menu.Item data-cy="logged-button" name="Logged in" />)}
+      </Menu>
     </Segment>
   )
 }

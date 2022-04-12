@@ -38,7 +38,6 @@ const Articles = () => {
               alt=""
               size="small"
               style={{ height: 200 + "px", width: "auto" }}
-              fluid
             />
           </Link>
         </li>
