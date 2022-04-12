@@ -5,20 +5,20 @@ describe("Visitor  can ", () => {
       cy.intercept("GET", "api/articles", {
         fixture: "articles.json",
       }).as("getArticles");
-
-      cy.intercept("GET", "**/article/**", {
-        fixture: "articleShow.json",
-      }).as("getSingleArticle");
-
       cy.visit("/");
       cy.window().its("store").invoke("dispatch", {
         type: "SET_USER_AUTHENTICATED",
         payload: true,
       });
+      cy.intercept("GET", "**/article/**", {
+        fixture: "articleShow.json",
+      }).as("getSingleArticle");
       cy.get("[data-cy=head-lines]").first().click();
     });
 
-    it.only("is expected to display a sign in button", () => {
+
+
+    it.only("is expected to not display the sign in button for an authenticated user", () => {
       cy.get("[data-cy=login-button]").should("not.exist");
     });
 
