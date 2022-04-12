@@ -12,11 +12,11 @@ describe('Visitor can switch to sport news category tab', () => {
   });
 
   it('is expected to articles sorted by sport ', () => {
-    cy.get('[data-cy=articles-list]')
+    cy.get("[data-cy=articles-list]")
       .first()
       .should(
-        'contain.text',
-        'Sports 1 Sports 2 Sports 3 Business 1 Business 2 Business 3'
+        "contain.text",
+        "Business 1 Business 2 Business 3 Sports 1 Sports 2 Sports 3"
       );
   });
 
@@ -56,7 +56,7 @@ describe('visitor can switch to business news category tab', () => {
       fixture: 'articleShow.json',
     }).as('getSingleArticle');
     cy.get('[data-cy=article-title]').first().click();
-    cy.url().should('contain', 'http://localhost:3000/article/4');
+    cy.url().should('contain', 'http://localhost:3000/article/1');
     cy.get('[data-cy=article-body]').should(
       'contain.text',
       'Lorem ipsum dolor'
