@@ -18,7 +18,7 @@ describe("Visitor  can ", () => {
 
 
 
-    it.only("is expected to not display the sign in button for an authenticated user", () => {
+    it("is expected to not display the sign in button for an authenticated user", () => {
       cy.get("[data-cy=login-button]").should("not.exist");
     });
 

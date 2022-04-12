@@ -1,5 +1,6 @@
-describe("visitor can", () => {
-  describe("see a single article by authenticating right away", () => {
+describe("visitor can see an single article by authenticating right away", () => {
+  
+  describe("visitor is able and required to authenticate", () => {
     beforeEach(() => {
       cy.intercept("GET", "api/articles", {
         fixture: "articles.json",
@@ -23,7 +24,16 @@ describe("visitor can", () => {
       cy.get("[data-cy=login-button]").should("be.visible");
     });
 
-    describe(" logging in right away", () => {
+    it("is expected the user will be informed they need to log in", () => {
+      cy.get("[data-cy=head-lines]").first().click();
+      cy.get("[data-cy=flash-message]").should(
+        "contain.text",
+        "Please login to view full articles"
+      );
+    });
+
+
+    describe("logging in right away", () => {
       beforeEach(() => {
         cy.get("[data-cy=login-button]").click();
         cy.get("[data-cy=login-email]").type("user@email.com");
@@ -41,7 +51,7 @@ describe("visitor can", () => {
         );
       });
 
-      describe("After logging in right away clicking an article", () => {
+      describe("By clicking an article and then logging in", () => {
         beforeEach(() => {
           cy.get("[data-cy=head-lines]").first().click();
         });
