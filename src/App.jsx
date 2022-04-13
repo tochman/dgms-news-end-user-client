@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-
+<Location />
       <NavBar />
       <Routes>
         <Route path="/" element={<Articles />} />
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/:category" element={<ArticleGroup />} />
         <Route path="/login" element={<Login toast={toast}/>} />
       </Routes>
-      <Location />
+      
       <div
         style={{
           position: 'fixed',
