@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-<Location />
+    <Location />
       <NavBar />
       <Routes>
         <Route path="/" element={<Articles />} />

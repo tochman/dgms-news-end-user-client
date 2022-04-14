@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Container, Card } from 'semantic-ui-react'
@@ -6,6 +6,10 @@ import { Container, Card } from 'semantic-ui-react'
 const ArticleGroup = () => {
   const { category } = useParams()
   const { articles } = useSelector((state) => state)
+  
+  const { userCountry } = useSelector((state) => state)
+  const country = userCountry
+  
 
   const articlesList = articles[category]?.map((article) => {
     return (
@@ -29,7 +33,7 @@ const ArticleGroup = () => {
 
   return (
     <Container text>
-      <div data-cy="category_header"> The latest {category} news </div>
+      <div data-cy="category_header"> The latest {category} news from {country} </div>
       <ul data-cy="articles-list">{articlesList}</ul>
     </Container>
   )
