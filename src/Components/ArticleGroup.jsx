@@ -20,6 +20,7 @@ const ArticleGroup = () => {
               alt=""
               style={{ height: 200 + 'px', width: 'auto' }}
             />
+            <h3 data-cy="article-location">Country - {article.country}</h3>{' '}
           </Link>
         </Card>
       </li>

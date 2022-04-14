@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Location = () => {
-  const [userInfo, setUserInfo] = useState({ city: ''})
+  const [userInfo, setUserInfo] = useState({ country: ''})
 
   const fetchUserCoordinates = () => {
     return new Promise((resolve, reject) => {
