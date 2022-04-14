@@ -11,7 +11,9 @@ const ArticleGroup = () => {
   const country = userCountry
   
 
-  const articlesList = articles[category]?.map((article) => {
+
+  const articlesList = articles[category]?.filter(object => object["country"] === `${country}`).map((article) => {
+    
     return (
       <li key={article.id} style={{ listStyleType: 'none' }}>
         <Card>

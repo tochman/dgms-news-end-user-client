@@ -35,7 +35,7 @@ describe('Visitor can view articles based on their location ', () => {
         .last()
         .within(() => {
           cy.get('[data-cy=article-location]')
-            .should('contain.text', 'Denmark')
+            .should('contain.text', 'Sweden')
             .and('be.visible')
         })
     })
