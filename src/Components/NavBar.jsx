@@ -2,10 +2,11 @@ import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Location from "./Location.jsx";
 
 const NavBar = () => {
   const { userAuthenticated } = useSelector((state) => state)
-  const { userCountry } = useSelector((state) => state)
+  //const { userCountry } = useSelector((state) => state)
 
   return (
     <Segment inverted>
@@ -39,7 +40,7 @@ const NavBar = () => {
       </Menu>
       <Menu.Item 
       />
-      <div data-cy="user-location">User location - {userCountry}</div>
+      <Location/>
     </Segment>
     
   )

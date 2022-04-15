@@ -1,7 +1,7 @@
 const initialState = {
   articles: [],
   userAuthenticated: false,
-  userCountry: 'Denmark',
+  userCountry: '',
 }
 
 export default initialState

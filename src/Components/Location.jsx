@@ -1,43 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 const Location = () => {
-  const [userInfo, setUserInfo] = useState({ country: '' })
-  const dispatch = useDispatch()
+  //const [userInfo, setUserInfo] = useState({ city: "" });
+  const { userCountry } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-  const fetchUserCoordinates = () => {
+  const fetchUserCoordinates = async () => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, {
         enableHighAccuracy: true,
-      })
-    })
-  }
+      });
+    });
+  };
 
   useEffect(() => {
-    fetchGeolocation()
-  }, [])
+    fetchGeolocation();
+  }, []);
 
   const fetchGeolocation = async () => {
-    const position = await fetchUserCoordinates()
+    const position = await fetchUserCoordinates();
     const openCageResponse = await axios.get(
-      'https://api.opencagedata.com/geocode/v1/json',
+      "https://api.opencagedata.com/geocode/v1/json",
       {
         params: {
-          key: '173d229274d946708766616770f94b87',
+          key: "173d229274d946708766616770f94b87",
           q: `${position.coords.latitude}+${position.coords.longitude}`,
         },
-      },
-    )
+      }
+    );
+    dispatch({
+      type: "SET_USER_COUNTRY",
+      payload: openCageResponse?.data.results[0].components.country,
+    });
+    // setUserInfo({
+    //   country: openCageResponse.data.results[0].components.country,
+    // });
+  };
 
-    setUserInfo({
-      country: openCageResponse.data.results[0].components.country,
-    })
-  }
+  return <div data-cy="user-location">{userCountry}</div>;
+};
 
-  dispatch({ type: 'SET_USER_COUNTRY', payload: userInfo.country })
-
-  return <div data-cy="user-location">{userInfo.country}</div>
-}
-
-export default Location
+export default Location;
