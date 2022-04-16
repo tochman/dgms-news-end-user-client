@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 const Location = () => {
-  //const [userInfo, setUserInfo] = useState({ city: "" });
   const { userCountry } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -34,9 +33,6 @@ const Location = () => {
       type: "SET_USER_COUNTRY",
       payload: openCageResponse?.data.results[0].components.country,
     });
-    // setUserInfo({
-    //   country: openCageResponse.data.results[0].components.country,
-    // });
   };
 
   return <div data-cy="user-location">{userCountry}</div>;

@@ -21,11 +21,7 @@ const rootReducer = (state, action) => {
         ...state,
         userAuthenticated: action.payload,
       };
-    case "SET_LOCATION":
-      return {
-        ...state,
-        setUserInfo: action.payload,
-      };
+
     default:
       return { ...state };
   }

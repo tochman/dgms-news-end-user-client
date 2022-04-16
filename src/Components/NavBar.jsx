@@ -6,7 +6,7 @@ import Location from "./Location.jsx";
 
 const NavBar = () => {
   const { userAuthenticated } = useSelector((state) => state)
-  //const { userCountry } = useSelector((state) => state)
+  
 
   return (
     <Segment inverted>
