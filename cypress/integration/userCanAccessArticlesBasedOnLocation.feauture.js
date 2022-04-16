@@ -7,7 +7,21 @@ describe("Visitor can view articles based on their location ", () => {
       fixture: "articles.json",
     }).as("getArticles");
 
-    cy.visit("/");
+     cy.visit("/", {
+       onBeforeLoad(window) {
+         const stubLocation = {
+           coords: {
+             latitude: 57.7308044,
+             longitude: 11.9834368,
+           },
+         };
+         cy.stub(window.navigator.geolocation, "getCurrentPosition").callsFake(
+           (callback) => {
+             return callback(stubLocation);
+           }
+         );
+       },
+     });
   });
 
   it("is expected to display the users location ", () => {
