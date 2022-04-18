@@ -35,7 +35,15 @@ const Location = () => {
     });
   };
 
-  return <div data-cy="user-location">{userCountry}</div>;
+
+
+
+  // const location_message = (typeof state!=="undefined") ? state : "no country " 
+  
+  
+  
+  return <div data-cy="user-location"> Showing news from {userCountry}</div>;
 };
+
 
 export default Location;

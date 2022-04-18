@@ -9,9 +9,9 @@ const ArticleGroup = () => {
   
   const { userCountry } = useSelector((state) => state)
   const country = userCountry
+
   
-
-
+  
   const articlesList = articles[category]?.filter(object => object["country"] === `${country}`).map((article) => {
     
     return (
@@ -32,6 +32,11 @@ const ArticleGroup = () => {
       </li>
     )
   })
+
+
+
+
+
 
   return (
     <Container text>
