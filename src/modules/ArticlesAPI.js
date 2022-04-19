@@ -1,11 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
+import NewsRoomAPI from './NewsRoomAPIConfig'
 import store from "../state/store/configureStore";
 
 const { dispatch, getState } = store;
 
 const ArticlesAPI = {
   async index() {
-    const response = await axios.get("api/articles");
+    const response = await NewsRoomAPI.get("/articles");
     dispatch({ type: "SET_ARTICLES", payload: response.data.articles });
   },
 
@@ -14,7 +15,7 @@ const ArticlesAPI = {
     // const article = articles.find((element) => {
     //   return element.id === parseInt(id);
     // });
-    const response = await axios.get(`api/articles/${id}`);
+    const response = await NewsRoomAPI.get(`/articles/${id}`);
     const { article } = response.data;
     dispatch({ type: "SET_ACTIVE_ARTICLE", payload: article });
   },

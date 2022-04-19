@@ -1,10 +1,14 @@
 /* eslint-disable no-undef */
 describe('user can see a collection of articles', () => {
   beforeEach(() => {
-    cy.intercept('GET', '/api/articles', {
+    cy.intercept('GET', '**/api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
-    cy.visit('/')
+    cy.visit('/', {
+      beforeLoad() {
+        // 
+      }
+    })
   })
 
   it("is expected to make a GET request to the API", () => {
