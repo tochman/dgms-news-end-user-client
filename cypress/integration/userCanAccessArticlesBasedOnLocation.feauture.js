@@ -1,8 +1,5 @@
 describe('Visitor can view articles based on their location ', () => {
   beforeEach(() => {
-    // cy.intercept("GET", "https://api.opencagedata.com/geocode/v1/json**", {
-    //   fixture: "location.json",
-    // }).as("getLocation");
     cy.intercept('GET', 'api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
@@ -57,30 +54,22 @@ describe('Visitor can view articles based on their location ', () => {
   })
 })
 
-describe('Visitor will view international articles if there is no locaiton is not found', () => {
+describe('Visitor will view international articles if there is no location is not found', () => {
   beforeEach(() => {
+    
     cy.intercept('GET', 'api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
-    
-    cy.visit('/', {
-      onBeforeLoad(window) {
-        const stubLocation = {
-          coords: {
-            latitude: 57.7308044,
-            longitude: 11.9834368,
-          },
-        }
-        cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
-          (callback) => {
-            return callback(stubLocation)
-          },
-        )
-      },
-    })
-})
 
-it('is expected to show the correct user location', () => {
-  cy.get('[data-cy=user-location]').should('contain', 'We could not detect your location, please try updating your settings')
-})
+    cy.intercept('GET', 'https://api.opencagedata.com/geocode/v1/json**', {
+      fixture: 'location.json',
+    }).as('getLocation')
+    cy.visit('/')
+  })
+  
+  describe("visitor received a message where no location found", () => {
+    it('is expected to show the correct user location', () => {
+      cy.get('[data-cy=user-location]').should('contain', 'location cannot be detected')
+    });
+  })
 })
