@@ -56,20 +56,28 @@ describe('Visitor can view articles based on their location ', () => {
 
 describe('Visitor will view international articles if there is no location is not found', () => {
   beforeEach(() => {
-    
     cy.intercept('GET', 'api/articles', {
       fixture: 'articles.json',
-    }).as('getArticles')
+    }) 
 
-    cy.intercept('GET', 'https://api.opencagedata.com/geocode/v1/json**', {
-      fixture: 'location.json',
-    }).as('getLocation')
-    cy.visit('/')
+    cy.visit('/', {
+      onBeforeLoad(window) {
+        const response = { error: { PERMISSION_DENIED: true } }
+        cy.stub(window.navigator.geolocation, 'getCurrentPosition').callsFake(
+          (callback) => {
+            return callback(response)
+          },
+        )
+      },
+    })
   })
-  
-  describe("visitor received a message where no location found", () => {
+
+  describe('visitor received a message where no location found', () => {
     it('is expected to show the correct user location', () => {
-      cy.get('[data-cy=user-location]').should('contain', 'location cannot be detected')
-    });
+      cy.get('[data-cy=user-location]').should(
+        'contain',
+        'location cannot be detected',
+      )
+    })
   })
 })

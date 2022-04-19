@@ -20,8 +20,9 @@ const Location = () => {
 
   const fetchGeolocation = async () => {
     const position = await fetchUserCoordinates()
-    
-    if (position.message) {
+
+    if (position.error) {
+      debugger
       dispatch({
         type: 'SET_USER_COUNTRY',
         payload: 'location cannot be detected',
@@ -42,8 +43,6 @@ const Location = () => {
       })
     }
   }
-
-  // const location_message = (typeof state!=="undefined") ? state : "no country "
 
   return <div data-cy="user-location"> Showing news from {userCountry}</div>
 }
