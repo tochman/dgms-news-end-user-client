@@ -5,6 +5,10 @@ describe("authenticated user", () => {
       fixture: "articles.json",
     });
     cy.intercept("POST", "https://r.stripe.com/0", { statusCode: 201 });
+    cy.intercept("POST", "api/subscriptions", {
+      statusCode: 201,
+      body: { paid: true },
+    });
     cy.visit("/");
     cy.window().its("store").invoke("dispatch", {
       type: "SET_USER_AUTHENTICATED",
@@ -19,22 +23,20 @@ describe("authenticated user", () => {
 
   describe.only("filling in a form with valid cc-details", () => {
     beforeEach(() => {
-      cy.get("@subscriptionButton").click()
-      cy.url().should('contain', '/payment')
-      // get the cc data
-      // cc-number
-      cy.wait(2000)
-      cy.get("div[data-cy=cardnumber]").within(() => {
-        cy.get('iframe[name^="__privateStripeFrame"]').then((iframe) => {
-          const body = iframe.contents().find("body");
-          cy.wrap(body).find('[name="cardnumber"]').type("4242424242424242", { delay: 2 });
-          debugger
-        });
-      });
-      // cc-expiry date
+      cy.get("@subscriptionButton").click();
+      cy.url().should("contain", "/payment");
 
-      // cc-cvc number
+      cy.wait(1000);
+      cy.fillInCPaymentFormField("cardnumber", "4242424242424242");
+      cy.fillInCPaymentFormField("exp-date", "1223");
+      cy.fillInCPaymentFormField("cvc", "123");
+      cy.get("[data-cy=submit-payment]").click();
     });
-    it("is expected to set his status to subscriber", () => {});
+    it("is expected to display a success message", () => {
+      cy.get("[data-cy=message]").should(
+        "contain.text",
+        "Thank you for subscribing!"
+      );
+    });
   });
 });
