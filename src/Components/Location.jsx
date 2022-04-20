@@ -22,7 +22,6 @@ const Location = () => {
     const position = await fetchUserCoordinates()
 
     if (position.error) {
-      debugger
       dispatch({
         type: 'SET_USER_COUNTRY',
         payload: 'location cannot be detected',
