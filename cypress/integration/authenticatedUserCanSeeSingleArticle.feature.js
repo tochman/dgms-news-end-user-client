@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 describe("Visitor  can ", () => {
   describe("see a full single article when authenticated", () => {
     beforeEach(() => {
