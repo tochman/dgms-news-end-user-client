@@ -58,7 +58,7 @@ describe('Visitor will view international articles if there is no location is no
   beforeEach(() => {
     cy.intercept('GET', 'api/articles', {
       fixture: 'articles.json',
-    }) 
+    })
 
     cy.visit('/', {
       onBeforeLoad(window) {
@@ -78,6 +78,10 @@ describe('Visitor will view international articles if there is no location is no
         'contain',
         'location cannot be detected',
       )
+    })
+    it('is expected to display Business articles from all locations', () => {
+      cy.get('[data-cy=business-link]').click()
+      cy.get('[data-cy=articles-list]').children().should("have.length", 3);
     })
   })
 })
