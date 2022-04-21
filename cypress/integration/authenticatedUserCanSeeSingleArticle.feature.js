@@ -4,7 +4,27 @@ describe("Visitor  can ", () => {
       cy.intercept("GET", "api/articles", {
         fixture: "articles.json",
       }).as("getArticles");
-      cy.visit("/");
+
+
+      cy.visit("/", {
+        onBeforeLoad(window) {
+          const stubLocation = {
+            coords: {
+              latitude: 57.7308044,
+              longitude: 11.9834368,
+            },
+          };
+          cy.stub(window.navigator.geolocation, "getCurrentPosition").callsFake(
+            (callback) => {
+              return callback(stubLocation);
+            }
+          );
+        },
+      });
+
+
+
+
       cy.window().its("store").invoke("dispatch", {
         type: "SET_USER_AUTHENTICATED",
         payload: true,
@@ -48,7 +68,22 @@ describe("Visitor  can ", () => {
         fixture: "articleShow.json",
       }).as("getSingleArticle");
 
-      cy.visit("/");
+      cy.visit("/", {
+        onBeforeLoad(window) {
+          const stubLocation = {
+            coords: {
+              latitude: 57.7308044,
+              longitude: 11.9834368,
+            },
+          };
+          cy.stub(window.navigator.geolocation, "getCurrentPosition").callsFake(
+            (callback) => {
+              return callback(stubLocation);
+            }
+          );
+        },
+      });
+
 
       cy.get("[data-cy=head-lines]").first().click();
     });

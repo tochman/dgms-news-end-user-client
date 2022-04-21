@@ -5,7 +5,22 @@ describe('user can see a collection of articles', () => {
       fixture: 'articles.json',
     }).as('getArticles')
 
-    cy.visit('/')
+    cy.visit("/", {
+      onBeforeLoad(window) {
+        const stubLocation = {
+          coords: {
+            latitude: 57.7308044,
+            longitude: 11.9834368,
+          },
+        };
+        cy.stub(window.navigator.geolocation, "getCurrentPosition").callsFake(
+          (callback) => {
+            return callback(stubLocation);
+          }
+        );
+      },
+    });
+
   })
 
   it('is expected to make a GET request to the API', () => {
