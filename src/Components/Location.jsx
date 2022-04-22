@@ -6,6 +6,10 @@ const Location = () => {
   const { userCountry } = useSelector((state) => state)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    fetchGeolocation()
+  }, [])
+
   const fetchUserCoordinates = async () => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, {
@@ -13,10 +17,6 @@ const Location = () => {
       })
     })
   }
-
-  useEffect(() => {
-    fetchGeolocation()
-  }, [])
 
   const fetchGeolocation = async () => {
     const position = await fetchUserCoordinates()
@@ -26,12 +26,14 @@ const Location = () => {
         type: 'SET_USER_COUNTRY',
         payload: 'location cannot be detected',
       })
+
     } else {
+  
       const openCageResponse = await axios.get(
         'https://api.opencagedata.com/geocode/v1/json',
         {
           params: {
-            key: '173d229274d946708766616770f94b87',
+            key: process.env.REACT_APP_OPENCAGEAPI_KEY,
             q: `${position.coords.latitude}+${position.coords.longitude}`,
           },
         },

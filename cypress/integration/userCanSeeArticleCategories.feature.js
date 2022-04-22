@@ -4,6 +4,10 @@ describe("Visitor can switch to sport news category tab", () => {
       fixture: "articles.json",
     }).as("getArticles");
 
+    cy.intercept('GET', 'https://api.opencagedata.com/geocode/v1/json**', {
+      fixture: 'location.json',
+    }).as('getLocation')
+
     cy.visit("/", {
       onBeforeLoad(window) {
         const stubLocation = {

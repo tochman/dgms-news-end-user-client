@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import auth from "../modules/auth";
 import { Button, Container, Form, Input } from "semantic-ui-react";
-
+import "/Users/gavinsimpson/dgms-news-end-user-client/src/Components/login.css"
 
 const Login = ({ toast }) => {
   const dispatch = useDispatch();
@@ -52,6 +52,7 @@ const Login = ({ toast }) => {
             data-cy="submit-button"
             content="Login"
             control={Button}
+            color="teal"
           />
         </Form>
       </Container>

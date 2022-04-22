@@ -1,9 +1,12 @@
-/* eslint-disable no-undef */
 describe('user can see a collection of articles', () => {
   beforeEach(() => {
     cy.intercept('GET', '/api/articles', {
       fixture: 'articles.json',
     }).as('getArticles')
+
+    cy.intercept('GET', 'https://api.opencagedata.com/geocode/v1/json**', {
+      fixture: 'location.json',
+    }).as('getLocation')
 
     cy.visit("/", {
       onBeforeLoad(window) {

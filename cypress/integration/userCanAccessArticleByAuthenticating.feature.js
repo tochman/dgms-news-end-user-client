@@ -14,6 +14,7 @@ describe("visitor can see an single article by authenticating right away", () =>
     cy.intercept("GET", "api/auth/validate_token**", {
       fixture: "authenticationSuccess.json",
     });
+    
     cy.visit("/", {
       onBeforeLoad(window) {
         const response = { error: { PERMISSION_DENIED: true } };
