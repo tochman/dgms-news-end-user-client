@@ -49,10 +49,10 @@ describe("authenticated user", () => {
 
   describe('Sad path', () => {
     beforeEach(() => {
-      // cy.intercept("POST", "api/subscriptions", {
-      //   statusCode: 201,
-      //   body: { paid: true },
-      // });
+      cy.intercept("POST", "api/subscriptions", {
+        statusCode: 402,
+        fixture: 'lost_card_response.json',
+      }).as('lostCardResponse');
       cy.visit("/");
       cy.window().its("store").invoke("dispatch", {
         type: "SET_USER_AUTHENTICATED",
@@ -71,7 +71,8 @@ describe("authenticated user", () => {
 
 
     it.only('is expected to respond....', () => {
-      
+      // cy.wait('@lostCardResponse').then((r)=> {
+      // })
     });
   });
 
