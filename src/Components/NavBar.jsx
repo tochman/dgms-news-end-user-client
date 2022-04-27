@@ -1,10 +1,12 @@
-import React from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
-import { NavLink, Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { Menu, Segment } from "semantic-ui-react";
+import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const NavBar = () => {
-  const { userAuthenticated } = useSelector((state) => state)
+  const { t, i18n } = useTranslation();
+  const { userAuthenticated } = useSelector((state) => state);
 
   return (
     <Segment inverted>
@@ -13,31 +15,45 @@ const NavBar = () => {
           data-cy="current-link"
           name="Current news"
           as={Link}
-          to={{ pathname: '/' }}
+          to={{ pathname: "/" }}
         />
         <Menu.Item
           data-cy="sports-link"
           name="Sports News"
           as={NavLink}
-          to={{ pathname: '/sports' }}
+          to={{ pathname: "/sports" }}
         />
         <Menu.Item
           data-cy="business-link"
           name="Business News"
           as={NavLink}
-          to={{ pathname: '/business' }}
+          to={{ pathname: "/business" }}
+        />
+        <Menu.Item
+          data-cy="swedish"
+          name={t('swedish')}
+          onClick={() => {
+            i18n.changeLanguage("sv");
+          }}
+        />
+        <Menu.Item
+          data-cy="english"
+          name={t('english')}
+          onClick={() => {
+            i18n.changeLanguage("en");
+          }}
         />
         {(!userAuthenticated && (
           <Menu.Item
             data-cy="login-button"
             name="Login"
             as={NavLink}
-            to={{ pathname: '/login' }}
+            to={{ pathname: "/login" }}
           />
-        )) || (<Menu.Item data-cy="logged-button" name="Logged in" />)}
+        )) || <Menu.Item data-cy="logged-button" name="Logged in" />}
       </Menu>
     </Segment>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
