@@ -2,11 +2,13 @@ import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Location from "./Location.jsx";
+import Location from './Location.jsx'
+import { useTranslation } from 'react-i18next'
+
 
 const NavBar = () => {
+  const {i18n} = useTranslation ()
   const { userAuthenticated } = useSelector((state) => state)
-  
 
   return (
     <Segment inverted>
@@ -29,6 +31,9 @@ const NavBar = () => {
           as={NavLink}
           to={{ pathname: '/business' }}
         />
+        <Menu.Item data-cy="Swedish" name="Swedish" onClick={()=> {i18n.changeLanguage("sv")}}/>
+        <Menu.Item data-cy="English" name="English"onClick={()=> {i18n.changeLanguage("en")}} />
+
         {(!userAuthenticated && (
           <Menu.Item
             data-cy="login-button"
@@ -36,13 +41,11 @@ const NavBar = () => {
             as={NavLink}
             to={{ pathname: '/login' }}
           />
-        )) || (<Menu.Item data-cy="logged-button" name="Logged in" />)}
+        )) || <Menu.Item data-cy="logged-button" name="Logged in" />}
       </Menu>
-      <Menu.Item 
-      />
-      <Location/>
+      <Menu.Item />
+      <Location />
     </Segment>
-    
   )
 }
 
