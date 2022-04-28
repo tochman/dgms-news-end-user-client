@@ -1,14 +1,12 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
-  const {t} = useTranslation
+  const { t } = useTranslation()
   return (
-      <footer>
-    <p data-cy="app-name" id="footer">
-      DGMS News - Bringing you the best local news
-      {t('appName')}
+    <footer>
+      <p data-cy="app-name" id="footer">
+        {t('appName')}
       </p>
     </footer>
   )

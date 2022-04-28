@@ -4,10 +4,12 @@ import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Location from './Location.jsx'
 import { useTranslation } from 'react-i18next'
+import LanguageChoice from './LanguageChoices.jsx'
+
 
 
 const NavBar = () => {
-  const {i18n} = useTranslation ()
+  const { t, i18n } = useTranslation()
   const { userAuthenticated } = useSelector((state) => state)
 
   return (
@@ -31,8 +33,19 @@ const NavBar = () => {
           as={NavLink}
           to={{ pathname: '/business' }}
         />
-        <Menu.Item data-cy="Swedish" name="Swedish" onClick={()=> {i18n.changeLanguage("sv")}}/>
-        <Menu.Item data-cy="English" name="English"onClick={()=> {i18n.changeLanguage("en")}} />
+        <Menu.Item
+          data-cy="swedish" 
+          name={t("swedish")}
+          onClick={() => {
+            i18n.changeLanguage('sv')
+          }}
+        />
+        <Menu.Item
+          data-cy="english"
+          name={t("english")}
+          onClick={() => { i18n.changeLanguage('en')
+          }}
+        />
 
         {(!userAuthenticated && (
           <Menu.Item
@@ -42,6 +55,7 @@ const NavBar = () => {
             to={{ pathname: '/login' }}
           />
         )) || <Menu.Item data-cy="logged-button" name="Logged in" />}
+        <LanguageChoice/>
       </Menu>
       <Menu.Item />
       <Location />

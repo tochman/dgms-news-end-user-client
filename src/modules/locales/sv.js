@@ -1,5 +1,9 @@
-const sv = { sv: { translations: { appName: 'DGMS Nyheter - Basta lokala nyheter',swedish: 'Swedish',
-english: 'English', } },
+const sv = {
+  translation: {
+    appName: 'DGMS Nyheter - Basta lokala nyheter',
+    swedish: 'Svensa',
+    english: 'Engelska',
+  }
 }
 
-
+export default sv

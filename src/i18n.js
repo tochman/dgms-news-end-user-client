@@ -1,17 +1,17 @@
-import i18next from 'i18next'
+import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import 
-
+import en from './modules/locales/en'
+import sv from './modules/locales/sv'
 
 const fallbackLng = ['en']
-const avaiablelanguages = ['en', 'sv']
+const avaiableLanguages = ['en', 'sv']
 
-const resources = {en: "en", sv: "sv"}
+const resources = {en: en ,sv: sv }
 
-i18next.use(initReactI18next).init({
+i18n.use(initReactI18next).init({
   resources,
   fallbackLng,
-  whitelist: avaiablelanguages,
+  whitelist: avaiableLanguages,
   interpolation: { escapeValue: false },
 })
 
