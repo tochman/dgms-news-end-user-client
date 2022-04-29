@@ -4,7 +4,13 @@ describe("user can change language settings", () => {
     cy.intercept("GET", "/api/articles", {
       fixture: "articles.json",
     });
-    cy.visit("/");
+    cy.visit("/", {
+      onBeforeLoad(window) {
+        Object.defineProperty(window.navigator, "language", {
+          get: cy.stub().returns("sv"),
+        });
+      },
+    });
   });
 
   it("is expected to show the application name in english", () => {
