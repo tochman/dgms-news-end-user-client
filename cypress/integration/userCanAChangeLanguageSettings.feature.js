@@ -1,20 +1,26 @@
-describe('user can see a collection of articles', () => {
+/* eslint-disable no-undef */
+describe("user can see a collection of articles", () => {
   beforeEach(() => {
-    cy.intercept('GET', '/api/articles', {
-      fixture: 'articles.json',
-    })
-    cy.visit('/')
-  })
+    cy.intercept("GET", "/api/articles", {
+      fixture: "articles.json",
+    });
+    cy.visit("/");
+  });
 
-  it('is expected to have a dropdown to select a language ', () => {
-    cy.get('[data-cy="dropdown"]').should('contain.text', 'LanguageEnglishSwedish')
-  })
+  it("is expected to have a dropdown to select a language ", () => {
+    cy.get('[data-cy="dropdown"]').should(
+      "contain.text",
+      "LanguageEnglishSwedish"
+    );
+  });
 
-
-  it('is expected to update on selection ', () => {
-    cy.get('[data-cy="dropdown"]').click().get('select').select('English').should("have.value", "Swedish")
-  
-  })
+  it("is expected to update on selection ", () => {
+    cy.get('[data-cy="dropdown"]').click().contains("Swedish").click();
+    cy.get("[data-cy=app-name]").should(
+      "contain.text",
+      "DGMS Nyheter - Basta lokala nyheter"
+    );
+  });
 
   // it('is expected to show the application name in english ', () => {
   //   cy.get('[data-cy=app-name]').should(
@@ -34,4 +40,4 @@ describe('user can see a collection of articles', () => {
   //       })
   //     })
   // })
-})
+});
